@@ -6,8 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -18,9 +19,11 @@ import java.util.UUID;
 
 import static androidx.fragment.app.FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
 
-public class CrimePagerActivity extends FragmentActivity {
+public class CrimePagerActivity extends AppCompatActivity {
     private static final String EXTRA_CRIME_ID =
             "com.regens.wesali.criminalintent.crime_id";
+    public static final String EXTRA_ARRAY_RESULT =
+            "ArrayResult";
 
     private ViewPager mViewPager;
     private List<Crime> mCrimes;
@@ -69,4 +72,5 @@ public class CrimePagerActivity extends FragmentActivity {
         intent.putIntegerArrayListExtra("ArrayResult", arrayListResult);
         setResult(Activity.RESULT_OK, intent);
     }
+
 }
