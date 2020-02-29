@@ -11,13 +11,13 @@ public class Crime {
     private Date mDate;
     private boolean mSolved;
     private String mSuspect;
-    private String mNumberSuspect;
+    private int mNumberSuspect;
 
-    public String getNumberSuspect() {
+    public int getNumberSuspect() {
         return mNumberSuspect;
     }
 
-    public void setNumberSuspect(String numberSuspect) {
+    public void setNumberSuspect(int numberSuspect) {
         mNumberSuspect = numberSuspect;
     }
 
@@ -59,6 +59,10 @@ public class Crime {
 
     public void setTitle(String title) {
         mTitle = title;
+    }
+
+    public String getPhotoFilename() {
+        return  "IMG_" + getId().toString() + ".jpg";
     }
 
     public UUID getId() {
