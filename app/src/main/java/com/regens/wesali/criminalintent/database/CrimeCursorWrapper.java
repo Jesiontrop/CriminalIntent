@@ -1,10 +1,10 @@
-package com.regens.wesali.criminalintent.datebase;
+package com.regens.wesali.criminalintent.database;
 
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
-import com.regens.wesali.criminalintent.Crime;
-import com.regens.wesali.criminalintent.datebase.CrimeDbSchema.CrimeTable;
+import com.regens.wesali.criminalintent.Data.Crime;
+import com.regens.wesali.criminalintent.database.CrimeDbSchema.CrimeTable;
 
 import java.util.Date;
 import java.util.UUID;

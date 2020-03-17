@@ -1,7 +1,8 @@
-package com.regens.wesali.criminalintent;
+package com.regens.wesali.criminalintent.Fragment;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -25,18 +26,25 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ShareCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.regens.wesali.criminalintent.Activity.CrimePagerActivity;
+import com.regens.wesali.criminalintent.Data.Crime;
+import com.regens.wesali.criminalintent.Data.CrimeLab;
+import com.regens.wesali.criminalintent.DialogFragment.DatePickerFragment;
+import com.regens.wesali.criminalintent.DialogFragment.ImageViewFragment;
+import com.regens.wesali.criminalintent.Utility.PictureUtils;
+import com.regens.wesali.criminalintent.R;
+
 import java.io.File;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 public class CrimeFragment extends Fragment {
@@ -49,7 +57,6 @@ public class CrimeFragment extends Fragment {
 
     private static ArrayList<Integer> sArrayResult = new ArrayList();
 
-    private CrimeLab mCrimes;
 
     private Crime mCrime;
     private File mPhotoFile;
@@ -61,8 +68,14 @@ public class CrimeFragment extends Fragment {
     private ImageButton mClearSuspectButton;
     private ImageButton mPhotoButton;
     private ImageView mPhotoView;
+    private Callbacks mCallbacks;
 
     private String mDateString;
+
+    public interface Callbacks {
+        void onCrimeUpdated(Crime crime);
+        void onCrimeDelete(Crime crime, Fragment fragment);
+    }
 
     public static ArrayList<Integer> getArrayResult() {
         return sArrayResult;
@@ -77,11 +90,16 @@ public class CrimeFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mCallbacks = (Callbacks) context;
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
-        mCrimes = CrimeLab.get(getActivity());
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
         mPhotoFile = CrimeLab.get(getActivity()).getPhotoFile(mCrime);
         int mResult = mCrime.getPosition();
@@ -97,6 +115,12 @@ public class CrimeFragment extends Fragment {
     }
 
     @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_crime, menu);
@@ -106,9 +130,10 @@ public class CrimeFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_item_delete_crime:
-                mCrimes.deleteCrime(mCrime);
                 mPhotoView.setImageDrawable(null);
-                getActivity().finish();
+                mCallbacks.onCrimeDelete(mCrime, this);
+                mCallbacks.onCrimeUpdated(mCrime);
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -129,6 +154,7 @@ public class CrimeFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 mCrime.setTitle(s.toString());
+                updateCrime();
             }
 
             @Override
@@ -156,6 +182,7 @@ public class CrimeFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 mCrime.setSolved(isChecked);
+                updateCrime();
             }
         });
 
@@ -210,7 +237,7 @@ public class CrimeFragment extends Fragment {
                 captureImage.resolveActivity(packageManager) != null;
         mPhotoButton.setEnabled(canTakePhoto);
         if (canTakePhoto) {
-            //FileProvider need to fix bag
+            //FileProvider is to fix the bag with the directory name
             Uri uri = FileProvider.getUriForFile(getActivity(),
                     getActivity().getApplicationContext().getPackageName()
                             + ".provider",
@@ -252,10 +279,11 @@ public class CrimeFragment extends Fragment {
             Date date = (Date) data
                     .getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             mCrime.setDate(date);
+            updateCrime();
             updateDate();
         } else if (requestCode == REQUEST_CONTACT && data != null) {
             Uri contactUri = data.getData();
-
+            // TODO: need add of get Number in SQL
             String[] queryFields = new String[] {
                     ContactsContract.Contacts.DISPLAY_NAME
             };
@@ -271,17 +299,24 @@ public class CrimeFragment extends Fragment {
                 c.moveToFirst();
                 String suspect = c.getString(0);
                 mCrime.setSuspect(suspect);
+                updateCrime();
                 mSuspectButton.setText(suspect);
             } finally {
                 c.close();
             }
         } else if (requestCode == REQUEST_PHOTO) {
+            updateCrime();
             updatePhotoView();
         }
     }
 
     public void returnResult(int result) {
         sArrayResult.add(result);
+    }
+
+    private void updateCrime() {
+        CrimeLab.get(getActivity()).updateCrime(mCrime);
+        mCallbacks.onCrimeUpdated(mCrime);
     }
 
     private void updateDate() {

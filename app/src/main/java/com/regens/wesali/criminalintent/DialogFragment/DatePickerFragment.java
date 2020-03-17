@@ -1,4 +1,4 @@
-package com.regens.wesali.criminalintent;
+package com.regens.wesali.criminalintent.DialogFragment;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -11,6 +11,8 @@ import android.widget.DatePicker;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
+
+import com.regens.wesali.criminalintent.R;
 
 import java.util.Calendar;
 import java.util.Date;

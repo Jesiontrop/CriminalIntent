@@ -1,10 +1,10 @@
-package com.regens.wesali.criminalintent.datebase;
+package com.regens.wesali.criminalintent.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.regens.wesali.criminalintent.datebase.CrimeDbSchema.CrimeTable;
+import com.regens.wesali.criminalintent.database.CrimeDbSchema.CrimeTable;
 
 
 public class CrimeBaseHelper extends SQLiteOpenHelper {

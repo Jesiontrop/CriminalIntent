@@ -1,4 +1,4 @@
-package com.regens.wesali.criminalintent;
+package com.regens.wesali.criminalintent.Utility;
 
 import android.app.Activity;
 import android.graphics.Bitmap;

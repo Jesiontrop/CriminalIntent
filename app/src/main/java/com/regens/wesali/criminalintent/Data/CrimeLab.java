@@ -1,4 +1,4 @@
-package com.regens.wesali.criminalintent;
+package com.regens.wesali.criminalintent.Data;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,9 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 
-import com.regens.wesali.criminalintent.datebase.CrimeBaseHelper;
-import com.regens.wesali.criminalintent.datebase.CrimeCursorWrapper;
-import com.regens.wesali.criminalintent.datebase.CrimeDbSchema.CrimeTable;
+import com.regens.wesali.criminalintent.database.CrimeBaseHelper;
+import com.regens.wesali.criminalintent.database.CrimeCursorWrapper;
+import com.regens.wesali.criminalintent.database.CrimeDbSchema.CrimeTable;
 
 import java.io.File;
 import java.util.ArrayList;

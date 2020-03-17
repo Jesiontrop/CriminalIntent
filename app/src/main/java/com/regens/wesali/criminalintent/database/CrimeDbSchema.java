@@ -1,4 +1,4 @@
-package com.regens.wesali.criminalintent.datebase;
+package com.regens.wesali.criminalintent.database;
 
 public class CrimeDbSchema {
     public static final class CrimeTable {

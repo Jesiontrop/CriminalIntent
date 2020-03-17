@@ -1,4 +1,4 @@
-package com.regens.wesali.criminalintent;
+package com.regens.wesali.criminalintent.Activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,12 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
+import com.regens.wesali.criminalintent.Data.Crime;
+import com.regens.wesali.criminalintent.Fragment.CrimeFragment;
+import com.regens.wesali.criminalintent.Data.CrimeLab;
+import com.regens.wesali.criminalintent.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +23,8 @@ import java.util.UUID;
 
 import static androidx.fragment.app.FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
 
-public class CrimePagerActivity extends AppCompatActivity {
+public class CrimePagerActivity extends AppCompatActivity
+        implements CrimeFragment.Callbacks{
     private static final String EXTRA_CRIME_ID =
             "com.regens.wesali.criminalintent.crime_id";
     public static final String EXTRA_ARRAY_RESULT =
@@ -73,4 +78,18 @@ public class CrimePagerActivity extends AppCompatActivity {
         setResult(Activity.RESULT_OK, intent);
     }
 
+    @Override
+    public void onCrimeUpdated(Crime crime) {
+    }
+
+    @Override
+    public void onCrimeDelete(Crime crime, Fragment fragment) {
+        Intent intent = new Intent();
+        ArrayList<Integer> arrayListResult = CrimeFragment.getArrayResult();
+        intent.putIntegerArrayListExtra("ArrayResult", arrayListResult);
+        setResult(Activity.RESULT_OK, intent);
+        CrimeLab.get(this)
+                .deleteCrime(crime);
+        finish();
+    }
 }

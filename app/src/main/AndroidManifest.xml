@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <provider
-            android:name=".GenericFileProvider"
+            android:name=".Utility.GenericFileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -25,16 +25,16 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths"/>
         </provider>
-        <activity android:name=".CrimeListActivity">
+        <activity android:name=".Activity.CrimeListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".CrimePagerActivity"
+            android:name=".Activity.CrimePagerActivity"
             android:label="@string/change_crime"
-            android:parentActivityName=".CrimeListActivity">
+            android:parentActivityName=".Activity.CrimeListActivity">
         </activity>
     </application>
 

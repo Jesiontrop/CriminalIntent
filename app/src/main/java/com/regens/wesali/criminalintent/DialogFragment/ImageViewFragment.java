@@ -1,18 +1,17 @@
-package com.regens.wesali.criminalintent;
+package com.regens.wesali.criminalintent.DialogFragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.core.content.FileProvider;
 import androidx.fragment.app.DialogFragment;
+
+import com.regens.wesali.criminalintent.R;
+import com.regens.wesali.criminalintent.Utility.PictureUtils;
 
 import java.io.File;
 

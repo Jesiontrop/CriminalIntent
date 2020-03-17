@@ -1,4 +1,4 @@
-package com.regens.wesali.criminalintent;
+package com.regens.wesali.criminalintent.Data;
 
 import java.util.Date;
 import java.util.UUID;
