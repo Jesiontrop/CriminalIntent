@@ -18,7 +18,7 @@
     <string name="crime_suspect_text">Chose Suspect</string>
     <string name="crime_report_text">Send Crime</string>
     <string name="crime_report">%1$s!
-    The crime was discovered on %2$s. %3$s, and %4$s
+        The crime was discovered on %2$s. %3$s, and %4$s
     </string>
     <string name="crime_report_solved">The case is solved</string>
     <string name="crime_report_unsolved">The case is not solved</string>
@@ -26,4 +26,16 @@
     <string name="crime_report_suspect">the suspect is %s.</string>
     <string name="crime_report_subject">CriminalIntent Crime Report</string>
     <string name="send_report">Send crime report via</string>
+    <string name="crime_photo_button_description">Take photo of crime scene</string>
+    <string name="crime_photo_no_image_description">
+        Open Crime scene photo (not set)
+    </string>
+    <string name="crime_photo_image_description">Open Crime scene photo (set)</string>
+    <string name="Monday">Monday</string>
+    <string name="Tuesday">Tuesday</string>
+    <string name="Wednesday">Wednesday</string>
+    <string name="Thursday">Thursday</string>
+    <string name="Friday">Friday</string>
+    <string name="Saturday">Saturday</string>
+    <string name="Sunday">Sunday</string>
 </resources>

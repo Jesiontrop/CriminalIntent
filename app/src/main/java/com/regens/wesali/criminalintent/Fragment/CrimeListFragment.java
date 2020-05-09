@@ -251,25 +251,25 @@ public class CrimeListFragment extends Fragment {
 
         switch (dayOfWeek) {
             case 1:
-                mWeek = "Sunday ";
+                mWeek = getString(R.string.Sunday)  + " ";
                 break;
             case 2:
-                mWeek = "Monday ";
+                mWeek = getString(R.string.Monday) + " ";
                 break;
             case 3:
-                mWeek = "Tuesday ";
+                mWeek = getString(R.string.Tuesday) + " ";
                 break;
             case 4:
-                mWeek = "Wednesday ";
+                mWeek = getString(R.string.Wednesday) + " ";
                 break;
             case 5:
-                mWeek = "Thursday ";
+                mWeek = getString(R.string.Thursday) + " ";
                 break;
             case 6:
-                mWeek = "Friday ";
+                mWeek = getString(R.string.Friday) + " ";
                 break;
             case 7:
-                mWeek = "Saturday ";
+                mWeek = getString(R.string.Saturday) + " ";
                 break;
             default:
                 mWeek = "";

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CriminalIntent</string>
+    <string name="crime_title_hint">Введите название преступления.</string>
+    <string name="crime_title_label">Название</string>
+    <string name="crime_details_label">Подробности</string>
+    <string name="crime_solved_label">Раскрыто?</string>
+    <string name="date_picker_title">Дата приступления:</string>
+    <string name="change_crime">Изменить Преступление</string>
+    <string name="new_crime">Новое преступление</string>
+    <string name="show_subtitle">Показать подзаголовок</string>
+    <string name="hide_subtitle">Скрыть подзаголовок</string>
+    <string name="subtitle_format">%1$s преступления</string>
+    <string name="delete_crime">Удалить Преступление</string>
+    <plurals name="subtitle_plural">
+        <item quantity="one">%1$s преступление</item>
+        <item quantity="few">%1$s преступления</item>
+        <item quantity="many">%1$s преступлений</item>
+    </plurals>
+    <string name="crime_suspect_text">Выбрать Подозреваемого</string>
+    <string name="crime_report_text">Отправить Преступление</string>
+    <string name="crime_report">%1$s!
+    Преступление было обнаруженно %2$s. %3$s, and %4$s
+    </string>
+    <string name="crime_report_solved">дело раскрыто</string>
+    <string name="crime_report_unsolved">дело не расрыто</string>
+    <string name="crime_report_no_suspect">подозреваемого нету.</string>
+    <string name="crime_report_suspect">подозревается %s.</string>
+    <string name="crime_report_subject">CriminalIntent Отчет о преступлении</string>
+    <string name="send_report">Отправить Отчет через</string>
+    <string name="crime_photo_button_description">Сфотографировать преступление</string>
+    <string name="crime_photo_no_image_description">
+        Открыть Фото преступления (не задана)
+    </string>
+    <string name="crime_photo_image_description">Открыть фото преступления (задана)</string>
+    <string name="Monday">Понедельник</string>
+    <string name="Tuesday">Вторник</string>
+    <string name="Wednesday">Среда</string>
+    <string name="Thursday">Четверг</string>
+    <string name="Friday">Пятница</string>
+    <string name="Saturday">Суббота</string>
+    <string name="Sunday">Воскресенье</string>
+</resources>
