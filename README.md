@@ -13,5 +13,5 @@ List of crimes of work colleagues
 ![](images/Send.png)
 
 ### Technology stack
--RecyclerView
--SQL
+- RecyclerView
+- SQL
