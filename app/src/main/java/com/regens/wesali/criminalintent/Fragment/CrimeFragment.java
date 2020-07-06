@@ -283,7 +283,6 @@ public class CrimeFragment extends Fragment {
             updateDate();
         } else if (requestCode == REQUEST_CONTACT && data != null) {
             Uri contactUri = data.getData();
-            // TODO: need add of get Number in SQL
             String[] queryFields = new String[] {
                     ContactsContract.Contacts.DISPLAY_NAME
             };

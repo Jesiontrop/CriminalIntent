@@ -109,7 +109,6 @@ public class CrimeListFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_crime_list, menu);
-        //TODO: need to fix the clearing subtitle
         MenuItem subtitleItem = menu.findItem(R.id.menu_item_show_subtitle);
         if (mSubtitleVisible) {
             subtitleItem.setTitle(R.string.hide_subtitle);
