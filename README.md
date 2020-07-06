@@ -6,7 +6,7 @@ List of crimes of work colleagues
 
 ## Crime change menu
 
-[](images/Crime.png)
+![](images/Crime.png)
 
 ## You can send crime
 
