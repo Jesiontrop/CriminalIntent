@@ -1,5 +1,5 @@
 # CriminalIntent
-List of crimes of work colleagues
+Android application showing the list of crimes of colleagues at work
 ## Crime List
 
 ![](images/CrimeList.png)
